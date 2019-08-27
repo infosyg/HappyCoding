@@ -1,15 +1,14 @@
+from django_micro import configure, route, run
+from django.http import HttpResponse
 
-    import os
-    import shutil
+DEBUG = True
+configure(locals())
 
-    path = './'
-    files = os.listdir(path)
 
-    for f in files:
+@route('', name='homepage')
+def homepage(request):
+    name = request.GET.get('name', 'World')
+    return HttpResponse('Hello, {}!'.format(name))
 
-        folder_name = './' + f.split('.')[-1]
-        if not os.path.exists(folder_name):
-            os.makedirs(folder_name)
-            shutil.move(f, folder_name)
-        else:
-            shutil.move(f, folder_name)
+
+application = run()
