@@ -11,7 +11,7 @@ setting = {
 }
 configure(setting)
 
-buffer = open("E:\Dev\HappyCoding\L02\source.csv", "r")
+buffer = open("d:/Dev/HappyCoding/L02/source.csv", "r")
 r = list(csv.reader(buffer))
 data = ''
 
@@ -22,6 +22,9 @@ for row in r:
         <td><h3> {row[1]} </h3></td>
         <td><h3> {row[2]} </h3></td>
     </tr>'''
+
+
+
 
 male_ad = '<image src="https://file-fsouxucwbs.now.sh" style="height:10%;margin:auto;display:block">'
 female_ad = '<image src="https://file-crccldcpvg.now.sh" style="height:10%;margin:auto;display:block">'
@@ -37,11 +40,11 @@ def homepage(request:HttpRequest):
     elif gender == "male":
         ad = male_ad
     else:
-        pass
+        ad = 'unknown'
     html = f'''
     <div style="background-color:#0A0A0E;height:150%">
         <image src="https://file-rctyjgetlr.now.sh" style="height:70%;margin:auto;display:block">
-        { ad }
+        { ad}
         <table style="width:70%;color:white;border-collapse:collapse" align="center">
             {data}
         </table>
